@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo, type ReactNode } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { ToastContainer } from 'react-toastify';
 
@@ -37,7 +37,7 @@ const ResultsOuter = styled.div`
 `;
 
 const ResultsContent = styled.section`
-  width: 95vw;
+  width: min(95vw, 96rem);
   margin: 0 auto;
   @keyframes cardFlash {
     0%,
@@ -75,6 +75,7 @@ const makeActionButtons = (title: string, refresh: () => void, showInfo: () => v
 );
 
 const Results = (props: { address?: string }): JSX.Element => {
+  const location = useLocation();
   const { urlToScan } = useParams();
   const address = props.address || urlToScan || '';
   const addressType: AddressType = useMemo(() => determineAddressType(address), [address]);
@@ -228,7 +229,7 @@ const Results = (props: { address?: string }): JSX.Element => {
         theme="dark"
         position="bottom-right"
       />
-      <Footer />
+      {new URLSearchParams(location.search).get('embedded') !== '1' && <Footer />}
     </ResultsOuter>
   );
 };

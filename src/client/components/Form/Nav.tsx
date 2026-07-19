@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import type { ReactNode } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import { StyledCard } from 'client/components/Form/Card';
 import Heading from 'client/components/Form/Heading';
@@ -13,16 +14,19 @@ const Header = styled(StyledCard)`
   justify-content: space-between;
   padding: 0.5rem 1rem;
   align-items: center;
-  width: 95vw;
+  width: min(95vw, 96rem);
 `;
 
 const Nav = (props: { children?: ReactNode }) => {
+  const location = useLocation();
+  const isZh = (new URLSearchParams(location.search).get('lang') || document.documentElement.lang).startsWith('zh');
+
   return (
     <Header as="header">
       <Heading color={colors.primary} size="large">
-        <img width="64" src="/favicon.svg" alt="Web Check Icon" />
-        <a href="/" target="_self">
-          Web Check
+        <span aria-hidden="true">✦</span>
+        <a href={`/check${location.search}`} target="_self">
+          {isZh ? 'SEO 检测' : 'SEO Check'}
         </a>
       </Heading>
       {props.children && props.children}

@@ -21,20 +21,25 @@ interface ButtonProps {
 
 const StyledButton = styled.button<ButtonProps>`
   cursor: pointer;
-  border: none;
-  border-radius: 0.25rem;
-  font-family: var(--font-mono);
+  border: 1px solid transparent;
+  border-radius: 0.75rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
   box-sizing: border-box;
   width: -moz-available;
   display: flex;
   justify-content: center;
   gap: 1rem;
-  box-shadow: 3px 3px 0px ${colors.fgShadowColor};
+  box-shadow: 0 10px 24px -12px ${colors.fgShadowColor};
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
   &:hover {
-    box-shadow: 5px 5px 0px ${colors.fgShadowColor};
+    box-shadow: 0 14px 30px -12px ${colors.fgShadowColor};
+    filter: brightness(1.06);
+    transform: translateY(-1px);
   }
   &:active {
-    box-shadow: -3px -3px 0px ${colors.fgShadowColor};
+    box-shadow: 0 4px 12px -8px ${colors.fgShadowColor};
+    transform: translateY(0);
   }
   ${(props) => applySize(props.size)};
   ${(props) => (props.bgColor ? `background: ${props.bgColor};` : `background: ${colors.primary};`)}

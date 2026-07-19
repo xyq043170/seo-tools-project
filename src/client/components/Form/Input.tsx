@@ -30,14 +30,17 @@ const InputContainer = styled.div<StyledInputTypes>`
 `;
 
 const StyledInput = styled.input<StyledInputTypes>`
-  background: ${colors.background};
+  background: color-mix(in srgb, ${colors.background} 82%, transparent);
   color: ${colors.textColor};
-  border: none;
-  border-radius: 0.25rem;
-  font-family: var(--font-mono);
-  box-shadow: 3px 3px 0px ${colors.backgroundDarker};
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  font-family: var(--font-sans);
+  box-shadow: 0 1px 2px ${colors.bgShadowColor};
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
   &:focus {
-    outline: 1px solid ${colors.primary};
+    outline: none;
+    border-color: ${colors.primary};
+    box-shadow: 0 0 0 3px ${colors.primaryTransparent};
   }
 
   ${(props) => applySize(props.inputSize)};
@@ -47,7 +50,8 @@ const StyledLabel = styled.label<StyledInputTypes>`
   color: ${colors.textColor};
   ${(props) => applySize(props.inputSize)};
   padding: 0;
-  font-size: 1.6rem;
+  font-size: 1rem;
+  font-weight: 600;
 `;
 
 const Input = (inputProps: Props): JSX.Element => {

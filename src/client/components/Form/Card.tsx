@@ -8,9 +8,12 @@ import colors from 'client/styles/colors';
 export const StyledCard = styled.section<{ styles?: string }>`
   background: ${colors.backgroundLighter};
   color: ${colors.textColor};
-  box-shadow: 4px 4px 0px ${colors.bgShadowColor};
-  border-radius: 8px;
-  padding: 1rem;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 18px 45px -28px ${colors.bgShadowColor};
+  border-radius: 16px;
+  padding: 1.1rem;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   position: relative;
   max-height: 54rem;
   overflow: auto;

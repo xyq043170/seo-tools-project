@@ -28,6 +28,28 @@ const { preloadBodyFont = true } = Astro.props;
     <ClientRouter />
     <MetaTags {...Astro.props} />
     <slot name="head" />
+    <script is:inline>
+      (() => {
+        const applyPreferences = () => {
+          const params = new URLSearchParams(window.location.search);
+          const theme = params.get('theme');
+          const language = params.get('lang');
+          const embedded = params.get('embedded') === '1';
+          if (theme === 'dark' || theme === 'light') document.documentElement.dataset.theme = theme;
+          if (language) document.documentElement.lang = language;
+          document.documentElement.dataset.embedded = String(embedded);
+        };
+        applyPreferences();
+        window.addEventListener('message', (event) => {
+          if (event.data?.type === 'tool-matrix-theme') {
+            document.documentElement.dataset.theme = event.data.theme === 'dark' ? 'dark' : 'light';
+          }
+          if (event.data?.type === 'tool-matrix-language') {
+            document.documentElement.lang = event.data.language || 'en';
+          }
+        });
+      })();
+    </script>
     {
       preloadBodyFont && (
         <link

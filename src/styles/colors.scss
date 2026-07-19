@@ -1,36 +1,45 @@
 :root {
-  --primary: #d6fb41;
-  --primary-lighter: #cff97a;
-  --text-color: #ffffff;
-  --text-color-secondary: #ffffffb6;
-  --text-color-thirdly: #ffffff5b;
-  --background: #111211;
-  --background-darker: #111927;
-  // --background-lighter: #1a2332;
-  --background-lighter: #3a3b3a;
-  --background-50: #11121180;
-  --bg-shadow-color: #0f1620;
-  --fg-shadow-color: #456602;
-  --primary-transparent: #d6fb4130;
+  --primary: #2563eb;
+  --primary-lighter: #60a5fa;
+  --text-color: #020817;
+  --text-color-secondary: #64748b;
+  --text-color-thirdly: #94a3b8;
+  --background: #f8fafc;
+  --background-darker: #e2e8f0;
+  --background-lighter: rgba(255, 255, 255, 0.78);
+  --background-50: rgba(248, 250, 252, 0.82);
+  --bg-shadow-color: rgba(15, 23, 42, 0.12);
+  --fg-shadow-color: rgba(37, 99, 235, 0.22);
+  --primary-transparent: rgba(37, 99, 235, 0.18);
+  --border-color: rgba(148, 163, 184, 0.28);
 
   // Action Colors
-  --info: #04e4f4;
-  --success: #20e253;
-  --warning: #f6f000;
-  --error: #fca016;
-  --danger: #f80363;
-  --neutral: #272f4d;
+  --info: #0891b2;
+  --success: #16a34a;
+  --warning: #ca8a04;
+  --error: #ea580c;
+  --danger: #dc2626;
+  --neutral: #64748b;
 }
 
-html[data-theme='light'] {
-  --primary: #4a7700;
-  --primary-lighter: #a4cf50;
-  --text-color: #333333;
-  --text-color-secondary: #57667e;
-  --background: #ffffff;
-  --background-darker: #f0f0f0;
-  --background-lighter: #fafafa;
-  --bg-shadow-color: #e0e0e0;
-  --fg-shadow-color: #678800;
-  --primary-transparent: #4a770033;
+html[data-theme='dark'] {
+  --primary: #60a5fa;
+  --primary-lighter: #93c5fd;
+  --text-color: #f8fafc;
+  --text-color-secondary: #94a3b8;
+  --text-color-thirdly: #64748b;
+  --background: #020817;
+  --background-darker: #020617;
+  --background-lighter: rgba(4, 17, 44, 0.78);
+  --background-50: rgba(2, 8, 23, 0.82);
+  --bg-shadow-color: rgba(0, 0, 0, 0.35);
+  --fg-shadow-color: rgba(59, 130, 246, 0.25);
+  --primary-transparent: rgba(59, 130, 246, 0.2);
+  --border-color: rgba(71, 85, 105, 0.4);
+  --info: #22d3ee;
+  --success: #4ade80;
+  --warning: #facc15;
+  --error: #fb923c;
+  --danger: #fb7185;
+  --neutral: #475569;
 }

@@ -7,15 +7,19 @@ body {
   font-family: var(--font-mono);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #141517;
-  color: #fff;
+  background:
+    radial-gradient(circle at 18% 0%, var(--primary-transparent), transparent 34rem),
+    radial-gradient(circle at 82% 100%, rgba(34, 211, 238, 0.1), transparent 30rem),
+    var(--background);
+  color: var(--text-color);
 }
 
 code {
   font-family: var(--font-mono);
 }
 #fancy-background {
-  color: var(--background, #141517);
+  color: var(--background);
+  opacity: 0.22;
 }
 
 ::selection {
@@ -24,8 +28,8 @@ code {
 }
 
 svg.rsm-svg {
-  background: #141517;
-  border-radius: 6px;
+  background: var(--background);
+  border-radius: 12px;
 }
 
 :root {

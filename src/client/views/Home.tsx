@@ -19,8 +19,8 @@ const HomeContainer = styled.section`
   justify-content: center;
   align-items: center;
   height: 100%;
-  font-family: var(--font-mono);
-  padding: 1.5rem 1rem 4rem 1rem;
+  font-family: var(--font-sans);
+  padding: clamp(1.25rem, 5vh, 4rem) 1rem 4rem;
   footer {
     z-index: 1;
   }
@@ -28,20 +28,46 @@ const HomeContainer = styled.section`
 
 const UserInputMain = styled.form`
   background: ${colors.backgroundLighter};
-  box-shadow: 4px 4px 0px ${colors.bgShadowColor};
-  border-radius: 8px;
-  padding: 1rem;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 24px 70px -36px ${colors.bgShadowColor};
+  border-radius: 20px;
+  padding: clamp(1.25rem, 4vw, 2.5rem);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   z-index: 5;
   margin: 1rem;
   width: calc(100% - 2rem);
-  max-width: 60rem;
+  max-width: 52rem;
   z-index: 2;
+`;
+
+const BrandIcon = styled.span`
+  display: inline-flex;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-right: 0.65rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: ${colors.primaryTransparent};
+  color: ${colors.primary};
+  box-shadow: 0 0 28px ${colors.primaryTransparent};
+`;
+
+const Intro = styled.p`
+  max-width: 38rem;
+  margin: -0.35rem auto 1.75rem;
+  color: ${colors.textColorSecondary};
+  text-align: center;
+  line-height: 1.65;
+  font-size: 1rem;
 `;
 
 const SponsorCard = styled.div`
   background: ${colors.backgroundLighter};
-  box-shadow: 4px 4px 0px ${colors.bgShadowColor};
-  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 18px 45px -30px ${colors.bgShadowColor};
+  border-radius: 16px;
   padding: 1rem;
   margin: 1rem;
   width: calc(100% - 2rem);
@@ -137,13 +163,23 @@ const Home = (): JSX.Element => {
   const navigate = useNavigate();
 
   const location = useLocation();
+  const query = new URLSearchParams(location.search);
+  const isEmbedded = query.get('embedded') === '1';
+  const isZh = (query.get('lang') || document.documentElement.lang).startsWith('zh');
+
+  const makeToolUrl = (address: string) => {
+    const preservedQuery = new URLSearchParams(location.search);
+    preservedQuery.delete('url');
+    const search = preservedQuery.toString();
+    return { pathname: `/check/${address}`, search: search ? `?${search}` : '' };
+  };
 
   useEffect(() => {
     const query = new URLSearchParams(location.search);
     const urlFromQuery = query.get('url');
     if (urlFromQuery) {
       const target = normalizeAddress(urlFromQuery);
-      if (target) navigate(`/check/${target}`, { replace: true });
+      if (target) navigate(makeToolUrl(target), { replace: true });
     }
   }, [navigate, location.search]);
 
@@ -157,7 +193,7 @@ const Home = (): JSX.Element => {
       setErrMsg('Must be a valid URL, IPv4 or IPv6 Address');
     } else {
       const resultRouteParams: NavigateOptions = { state: { address, addressType } };
-      navigate(`/check/${address}`, resultRouteParams);
+      navigate(makeToolUrl(address), resultRouteParams);
     }
   };
 
@@ -184,20 +220,25 @@ const Home = (): JSX.Element => {
     <HomeContainer>
       <FancyBackground />
       <UserInputMain onSubmit={formSubmitEvent}>
-        <a href="/">
+        <a href={`/check${location.search}`}>
           <Heading as="h1" size="xLarge" align="center" color={colors.primary}>
-            <img width="64" src="/web-check.png" alt="Web Check Icon" />
-            Web Check
+            <BrandIcon aria-hidden="true">✦</BrandIcon>
+            {isZh ? '网站 SEO 检测' : 'Website SEO Check'}
           </Heading>
         </a>
+        <Intro>
+          {isZh
+            ? '输入网站地址，一次查看性能、安全、域名、链接与搜索优化信号。'
+            : 'Enter a website to inspect performance, security, domains, links, and search optimization signals.'}
+        </Intro>
         <Input
           id="user-input"
           value={userInput}
-          label="Enter a URL"
+          label={isZh ? '网站地址' : 'Website address'}
           size="large"
           orientation="vertical"
           name="url"
-          placeholder={placeholder}
+          placeholder={isZh ? '例如 example.com' : placeholder}
           disabled={inputDisabled}
           handleChange={inputChange}
           handleKeyDown={handleKeyPress}
@@ -205,10 +246,10 @@ const Home = (): JSX.Element => {
         {/* <FindIpButton onClick={findIpAddress}>Or, find my IP</FindIpButton> */}
         {errorMsg && <ErrorMessage>{errorMsg}</ErrorMessage>}
         <Button type="submit" styles="width: calc(100% - 1rem);" size="large" onClick={submit}>
-          Analyze!
+          {isZh ? '开始检测' : 'Start analysis'}
         </Button>
       </UserInputMain>
-      <SponsorCard>
+      {!isEmbedded && <SponsorCard>
         <Heading as="h2" size="small" color={colors.primary}>
           Enjoying Web Check?
         </Heading>
@@ -220,8 +261,8 @@ const Home = (): JSX.Element => {
           </a>
           . Every bit genuinely helps, thank you
         </p>
-      </SponsorCard>
-      <SiteFeaturesWrapper>
+      </SponsorCard>}
+      {!isEmbedded && <SiteFeaturesWrapper>
         <div className="features">
           <Heading as="h2" size="small" color={colors.primary}>
             Supported Checks
@@ -263,8 +304,8 @@ const Home = (): JSX.Element => {
             <Button>API Docs</Button>
           </Link>
         </div>
-      </SiteFeaturesWrapper>
-      <Footer isFixed={true} />
+      </SiteFeaturesWrapper>}
+      {!isEmbedded && <Footer isFixed={true} />}
     </HomeContainer>
   );
 };
