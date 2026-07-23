@@ -1,17 +1,17 @@
 :root {
   --primary: #2563eb;
   --primary-lighter: #60a5fa;
-  --text-color: #020817;
-  --text-color-secondary: #64748b;
-  --text-color-thirdly: #94a3b8;
-  --background: #f8fafc;
-  --background-darker: #e2e8f0;
-  --background-lighter: rgba(255, 255, 255, 0.78);
-  --background-50: rgba(248, 250, 252, 0.82);
-  --bg-shadow-color: rgba(15, 23, 42, 0.12);
-  --fg-shadow-color: rgba(37, 99, 235, 0.22);
-  --primary-transparent: rgba(37, 99, 235, 0.18);
-  --border-color: rgba(148, 163, 184, 0.28);
+  --text-color: #171614;
+  --text-color-secondary: #6d6962;
+  --text-color-thirdly: #99948b;
+  --background: #f6f4ef;
+  --background-darker: #e7e3da;
+  --background-lighter: #ffffff;
+  --background-50: rgba(246, 244, 239, 0.88);
+  --bg-shadow-color: rgba(23, 22, 20, 0.16);
+  --fg-shadow-color: rgba(255, 198, 108, 0.28);
+  --primary-transparent: rgba(255, 198, 108, 0.32);
+  --border-color: #dfdcd4;
 
   // Action Colors
   --info: #0891b2;
@@ -25,17 +25,17 @@
 html[data-theme='dark'] {
   --primary: #60a5fa;
   --primary-lighter: #93c5fd;
-  --text-color: #f8fafc;
-  --text-color-secondary: #94a3b8;
-  --text-color-thirdly: #64748b;
-  --background: #020817;
-  --background-darker: #020617;
-  --background-lighter: rgba(4, 17, 44, 0.78);
-  --background-50: rgba(2, 8, 23, 0.82);
+  --text-color: #f5f3ed;
+  --text-color-secondary: #aaa69e;
+  --text-color-thirdly: #77736d;
+  --background: #151412;
+  --background-darker: #0f0e0d;
+  --background-lighter: #1c1b19;
+  --background-50: rgba(21, 20, 18, 0.88);
   --bg-shadow-color: rgba(0, 0, 0, 0.35);
   --fg-shadow-color: rgba(59, 130, 246, 0.25);
-  --primary-transparent: rgba(59, 130, 246, 0.2);
-  --border-color: rgba(71, 85, 105, 0.4);
+  --primary-transparent: rgba(255, 198, 108, 0.2);
+  --border-color: #38352f;
   --info: #22d3ee;
   --success: #4ade80;
   --warning: #facc15;

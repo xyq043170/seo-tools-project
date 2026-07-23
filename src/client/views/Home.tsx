@@ -30,14 +30,14 @@ const UserInputMain = styled.form`
   background: ${colors.backgroundLighter};
   border: 1px solid var(--border-color);
   box-shadow: 0 24px 70px -36px ${colors.bgShadowColor};
-  border-radius: 20px;
+  border-radius: 16px;
   padding: clamp(1.25rem, 4vw, 2.5rem);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   z-index: 5;
   margin: 1rem;
   width: calc(100% - 2rem);
-  max-width: 52rem;
+  max-width: 48rem;
   z-index: 2;
 `;
 
@@ -48,7 +48,7 @@ const BrandIcon = styled.span`
   margin-right: 0.65rem;
   align-items: center;
   justify-content: center;
-  border-radius: 999px;
+  border-radius: 12px;
   background: ${colors.primaryTransparent};
   color: ${colors.primary};
   box-shadow: 0 0 28px ${colors.primaryTransparent};
