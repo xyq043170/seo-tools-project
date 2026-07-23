@@ -501,7 +501,7 @@ const ProgressLoader = ({ loadStatus, showModal, showJobDocs }: ProgressLoaderPr
                   required info, or restrictions in the lambda function, or hitting an API limit.
                 </p>
               )}
-              <AboutPageLink href="/check/about" target="_blank" rel="noreferrer">
+              <AboutPageLink href={`${import.meta.env.PUBLIC_APP_BASE || '/seo'}/about`} target="_blank" rel="noreferrer">
                 Learn More about Web-Check
               </AboutPageLink>
             </Details>

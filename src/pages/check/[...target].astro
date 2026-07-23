@@ -12,7 +12,7 @@ const searchUrl = new URLSearchParams(search).get('url');
 
 if (searchUrl) {
   const target = normalizeAddress(searchUrl);
-  if (target) Astro.redirect(`/check/${target}`);
+  if (target) Astro.redirect(`/seo/${target}`);
 }
 
 const { target } = Astro.params;
@@ -37,7 +37,7 @@ const pageTitle = target ? `${target} | Web Check` : 'Web Check';
   const searchParams = new URL(window.location.href).searchParams;
   if (searchParams.has('url')) {
     const target = normalizeAddress(searchParams.get('url') || '');
-    if (target) window.location.href = `/check/${target}`;
+    if (target) window.location.href = `/seo/${target}`;
   }
 
   const form = document.querySelector<HTMLFormElement>('form');
@@ -46,7 +46,7 @@ const pageTitle = target ? `${target} | Web Check` : 'Web Check';
       event.preventDefault();
       const input = (this as HTMLFormElement).querySelector<HTMLInputElement>('input[name="url"]');
       const target = normalizeAddress(input?.value);
-      if (target) window.location.href = `/check/${target}`;
+      if (target) window.location.href = `/seo/${target}`;
     });
   }
 </script>

@@ -19,13 +19,14 @@ const Header = styled(StyledCard)`
 
 const Nav = (props: { children?: ReactNode }) => {
   const location = useLocation();
+  const appBasePath = import.meta.env.PUBLIC_APP_BASE || '/seo';
   const isZh = (new URLSearchParams(location.search).get('lang') || document.documentElement.lang).startsWith('zh');
 
   return (
     <Header as="header">
       <Heading color={colors.primary} size="large">
         <span aria-hidden="true">✦</span>
-        <a href={`/check${location.search}`} target="_self">
+        <a href={`${appBasePath}${location.search}`} target="_self">
           {isZh ? 'SEO 检测' : 'SEO Check'}
         </a>
       </Heading>

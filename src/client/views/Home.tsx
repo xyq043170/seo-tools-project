@@ -155,6 +155,7 @@ const makeAnchor = (title: string): string =>
     .replace(/\s+/g, '-');
 
 const Home = (): JSX.Element => {
+  const appBasePath = import.meta.env.PUBLIC_APP_BASE || '/seo';
   const defaultPlaceholder = 'e.g. duck.com';
   const [userInput, setUserInput] = useState('');
   const [errorMsg, setErrMsg] = useState('');
@@ -171,7 +172,7 @@ const Home = (): JSX.Element => {
     const preservedQuery = new URLSearchParams(location.search);
     preservedQuery.delete('url');
     const search = preservedQuery.toString();
-    return { pathname: `/check/${address}`, search: search ? `?${search}` : '' };
+    return { pathname: `/${address}`, search: search ? `?${search}` : '' };
   };
 
   useEffect(() => {
@@ -220,7 +221,7 @@ const Home = (): JSX.Element => {
     <HomeContainer>
       <FancyBackground />
       <UserInputMain onSubmit={formSubmitEvent}>
-        <a href={`/check${location.search}`}>
+        <a href={`${appBasePath}${location.search}`}>
           <Heading as="h1" size="xLarge" align="center" color={colors.primary}>
             <BrandIcon aria-hidden="true">✦</BrandIcon>
             {isZh ? '网站 SEO 检测' : 'Website SEO Check'}
@@ -270,13 +271,13 @@ const Home = (): JSX.Element => {
           <ul>
             {docs.map((doc, index) => (
               <li key={index}>
-                <Link to={`/check/about#${makeAnchor(doc.title)}`} title={doc.title}>
+                <Link to={`/about#${makeAnchor(doc.title)}`} title={doc.title}>
                   {doc.title}
                 </Link>
               </li>
             ))}
             <li>
-              <Link to="/check/about">+ more!</Link>
+              <Link to="/about">+ more!</Link>
             </li>
           </ul>
         </div>
@@ -298,7 +299,7 @@ const Home = (): JSX.Element => {
             <Button>Deploy your own</Button>
           </a>
           <Link
-            to="/check/about#api-documentation"
+            to="/about#api-documentation"
             title="View the API documentation, to use Web-Check programmatically"
           >
             <Button>API Docs</Button>

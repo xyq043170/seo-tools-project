@@ -52,7 +52,7 @@ const reducer = (s: JobsState, a: Action): JobsState => {
 
 const isTimeout = (msg = '') => /timed[- ]?out/i.test(msg);
 
-const apiBase = (import.meta.env.PUBLIC_API_ENDPOINT || '/api') as string;
+const apiBase = (import.meta.env.PUBLIC_API_ENDPOINT || '/seo-api') as string;
 
 // Drives every job's lifecycle: fetch, retry, abort, fallback promotion
 const useJobs = (address: string, addressType: AddressType, jobs: JobSpec[]) => {
