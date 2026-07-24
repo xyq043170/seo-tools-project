@@ -22,7 +22,7 @@ const siteInfo = {
   themeColor: '#c1fb41',
   author: 'Alicia Sykes',
   twitter: '@Lissy_Sykes',
-  site: import.meta.env.SITE_URL || 'https://web-check.xyz',
+  site: import.meta.env.SITE_URL || 'https://seo-tools-project.onrender.com',
   analytics: {
     enable: import.meta.env.ENABLE_ANALYTICS,
     domain: 'web-check.as93.net',
@@ -54,6 +54,20 @@ const makeBreadcrumbs = () => {
       item: `${site}/${breadcrumb.item}`,
     })),
   };
+};
+const softwareSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Web Check',
+  url: site,
+  applicationCategory: 'SecurityApplication',
+  operatingSystem: 'Web',
+  isAccessibleForFree: true,
+  description: pageDescription,
+  author: { '@type': 'Person', name: 'Alicia Sykes', url: 'https://github.com/Lissy93' },
+  codeRepository: 'https://github.com/Lissy93/web-check',
+  license: 'https://github.com/Lissy93/web-check/blob/master/LICENSE',
+  isPartOf: { '@type': 'WebSite', name: 'Smart Tool Matrix', url: 'https://gotoolmatrix.com/' },
 };
 ---
 
@@ -111,3 +125,4 @@ const makeBreadcrumbs = () => {
     <script is:inline type="application/ld+json" set:html={JSON.stringify(customSchemaJson)} />
   )
 }
+{!customSchemaJson && <script is:inline type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />}
