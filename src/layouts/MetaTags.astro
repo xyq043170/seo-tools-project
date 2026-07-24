@@ -13,9 +13,9 @@ interface Props {
 // Default meta tag values
 const siteInfo = {
   title: 'Web Check',
-  titleLong: 'Web Check - X-Ray Vision for any Website',
+  titleLong: 'Web Check - Automated Website Inspection',
   description:
-    'Web Check is the all-in-one OSINT and security tool, for revealing the inner workings of any website',
+    'Inspect public DNS, TLS, headers, metadata, technologies, robots rules and other website signals. Results are automated observations, not a security certification.',
   keywords:
     'web check, OSINT, website security, security audit, DNS lookup, SSL check, ' +
     'tech stack detection, website analyzer, web tools, open source',
@@ -60,13 +60,15 @@ const softwareSchema = {
   '@type': 'WebApplication',
   name: 'Web Check',
   url: site,
-  applicationCategory: 'SecurityApplication',
+  applicationCategory: 'DeveloperApplication',
   operatingSystem: 'Web',
   isAccessibleForFree: true,
   description: pageDescription,
   author: { '@type': 'Person', name: 'Alicia Sykes', url: 'https://github.com/Lissy93' },
   codeRepository: 'https://github.com/Lissy93/web-check',
   license: 'https://github.com/Lissy93/web-check/blob/master/LICENSE',
+  disambiguatingDescription:
+    'Automated point-in-time observations; not a penetration test, compliance assessment, search ranking guarantee or security certification.',
   isPartOf: { '@type': 'WebSite', name: 'Smart Tool Matrix', url: 'https://gotoolmatrix.com/' },
 };
 ---

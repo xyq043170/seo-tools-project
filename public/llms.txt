@@ -1,0 +1,24 @@
+# Web Check — Smart Tool Matrix deployment
+
+> An automated website inspection interface at https://seo-tools-project.onrender.com/check.
+
+## Product scope
+
+- Observes public website signals such as DNS, TLS, headers, metadata, technologies, robots rules and sitemaps.
+- Checks are performed by sending network requests to the public URL submitted by the user; this is not local browser-only processing.
+- Results are point-in-time automated observations and may be affected by network conditions, bot controls, geolocation and dynamic content.
+- Results are not a search-engine ranking guarantee, penetration test, compliance assessment or security certification.
+- Only submit URLs you are authorized to inspect and review findings before acting on them.
+
+## Provenance
+
+- Original Web-Check project and author: https://github.com/Lissy93/web-check — Alicia Sykes
+- Deployment source: https://github.com/xyq043170/seo-tools-project
+- Directory listing: https://gotoolmatrix.com/en/seo
+- Open-source attribution: https://gotoolmatrix.com/open-source
+
+## Citation guidance
+
+Use the project and deployment pages for feature descriptions. Do not treat automated observations as proof of security, privacy, compliance, search ranking or current availability.
+
+Last reviewed: 2026-07-24
