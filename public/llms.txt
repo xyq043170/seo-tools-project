@@ -14,8 +14,8 @@
 
 - Original Web-Check project and author: https://github.com/Lissy93/web-check — Alicia Sykes
 - Deployment source: https://github.com/xyq043170/seo-tools-project
-- Directory listing: https://gotoolmatrix.com/en/seo
-- Open-source attribution: https://gotoolmatrix.com/open-source
+- Directory listing: https://gotoolmatrix.com/seo/
+- Open-source attribution: https://gotoolmatrix.com/about
 
 ## Citation guidance
 
