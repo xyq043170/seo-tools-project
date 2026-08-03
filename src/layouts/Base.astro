@@ -1,6 +1,7 @@
 ---
 import { ClientRouter } from 'astro:transitions';
 import MetaTags from '@layouts/MetaTags.astro';
+import ToolMatrixBar from '../components/scafold/ToolMatrixBar.astro';
 
 import '@styles/typography.scss';
 import '@styles/global.scss';
@@ -63,6 +64,7 @@ const { preloadBodyFont = true } = Astro.props;
     }
   </head>
   <body>
+    <ToolMatrixBar />
     <slot />
   </body>
 </html>
